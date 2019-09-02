@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using meatballs.utilities;
+using meatballs.classes;
 
 namespace meatballs
 {
@@ -23,6 +25,10 @@ namespace meatballs
         public MainWindow()
         {
             InitializeComponent();
+
+            txtTest.Content = "Config Files Created In: " + XMLReader.DocPath;
+            XMLReader.CreateWorkingDirectory(); //creates all the necessary files the first time the application is loaded.
+            Writer.WriteAuthor(new Author("Test", -1, DateTime.Now, "Test"));
         }
     }
 }

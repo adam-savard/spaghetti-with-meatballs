@@ -31,5 +31,13 @@ namespace meatballs.classes
         /// Any notes on the creator (for things like termination date, etc)
         /// </summary>
         public string Notes { get => notes; set => notes = value; }
+
+        public Author(string name, int id, DateTime created, string notes)
+        {
+            Name = name;
+            Id = id;
+            Created = created;
+            Notes = notes;
+        }
     }
 }

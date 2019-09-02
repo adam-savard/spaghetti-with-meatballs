@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:meatballs"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Meatballs De-Spaghettifier" Height="450" Width="800">
     <Grid>
-        <Label Content="Test" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="107,72,0,0"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="307*"/>
+            <ColumnDefinition Width="89*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="txtTest" Content="Test" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
 
     </Grid>
 </Window>
