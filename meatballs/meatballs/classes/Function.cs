@@ -11,7 +11,7 @@ namespace meatballs.classes
         private string notes;
         private Author author;
         private File file;
-        private Function[] calls;
+        private List<Function> calls;
 
         /// <summary>
         /// The name of the function, the method signature.
@@ -28,16 +28,16 @@ namespace meatballs.classes
         /// <summary>
         /// The author of the function
         /// </summary>
-        internal Author Author { get => author; set => author = value; }
+        public Author Author { get => author; set => author = value; }
         /// <summary>
         /// The file the function belongs to.
         /// </summary>
-        internal File File { get => file; set => file = value; }
+        public File File { get => file; set => file = value; }
 
         //The .this is intentional. Not sure how else to get the point across.
         /// <summary>
         /// List of functions .this calls.
         /// </summary>
-        internal Function[] Calls { get => calls; set => calls = value; }
+        public List<Function> Calls { get => calls; set => calls = value; }
     }
 }

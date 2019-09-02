@@ -13,7 +13,7 @@ namespace meatballs.classes
         private string notes;
         private Project project;
         private Author author;
-        private Function[] functions;
+        private List<Function> functions;
 
         /// <summary>
         /// The unique identifier for the file.
@@ -38,14 +38,14 @@ namespace meatballs.classes
         /// <summary>
         /// The project the file belongs to.
         /// </summary>
-        internal Project Project { get => project; set => project = value; }
+        public Project Project { get => project; set => project = value; }
         /// <summary>
         /// The original author of the file.
         /// </summary>
-        internal Author Author { get => author; set => author = value; }
+        public Author Author { get => author; set => author = value; }
         /// <summary>
         /// A list of functions that are in the file.
         /// </summary>
-        internal Function[] Functions { get => functions; set => functions = value; }
+        public List<Function> Functions { get => functions; set => functions = value; }
     }
 }
