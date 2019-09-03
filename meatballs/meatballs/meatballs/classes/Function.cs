@@ -12,6 +12,7 @@ namespace meatballs.classes
         private Author author;
         private File file;
         private List<Function> calls;
+        private int id;
 
         /// <summary>
         /// The name of the function, the method signature.
@@ -39,5 +40,6 @@ namespace meatballs.classes
         /// List of functions .this calls.
         /// </summary>
         public List<Function> Calls { get => calls; set => calls = value; }
+        public int Id { get => id; set => id = value; }
     }
 }

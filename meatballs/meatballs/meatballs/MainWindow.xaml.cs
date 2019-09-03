@@ -26,9 +26,23 @@ namespace meatballs
         {
             InitializeComponent();
 
-            txtTest.Content = "Config Files Created In: " + XMLReader.DocPath;
+            txtTest.Content = "Config Files Exist!";
             XMLReader.CreateWorkingDirectory(); //creates all the necessary files the first time the application is loaded.
-            Writer.WriteAuthor(new Author("Test", -1, DateTime.Now, "Test"));
+        }
+
+        private void BtnCreateProject_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Not sure what everything does? Check out the documentation.");
+        }
+
+        private void BtnNewAuthor_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
