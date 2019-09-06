@@ -1,0 +1,14 @@
+﻿<Window x:Name="frmFunctionList" x:Class="meatballs.FunctionList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:meatballs"
+        mc:Ignorable="d"
+        Title="Function List" Height="450" Width="663.897">
+    <Grid Margin="0,0,2,0">
+        <ListBox x:Name="lstFunctions" HorizontalAlignment="Left" Height="347" VerticalAlignment="Top" Width="638" Margin="10,62,0,0"/>
+        <Label x:Name="lblNames" Content="Functions from blank" RenderTransformOrigin="0.383,-1.96" Margin="10,10,10,362"/>
+
+    </Grid>
+</Window>
