@@ -12,10 +12,10 @@
             <ColumnDefinition Width="89*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="txtTest" Content="Test" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
-        <Button x:Name="btnCreateProject" Content="New Project" HorizontalAlignment="Left" VerticalAlignment="Top" Width="99" Margin="10,51,0,0" Click="BtnCreateProject_Click"/>
-        <Button x:Name="btnNewAuthor" Content="New Author" HorizontalAlignment="Left" VerticalAlignment="Top" Width="99" Margin="10,26,0,0" Click="BtnNewAuthor_Click"/>
-        <Button x:Name="btnNewFile" Content="New File" HorizontalAlignment="Left" VerticalAlignment="Top" Width="99" Margin="10,76,0,0"/>
-        <Button x:Name="btnFunctionEntry" Content="Function Entry" HorizontalAlignment="Left" VerticalAlignment="Top" Width="99" Margin="10,101,0,0"/>
+        <Button x:Name="btnCreateProject" Content="New Project" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Margin="10,51,0,0" Click="BtnCreateProject_Click"/>
+        <Button x:Name="btnNewAuthor" Content="New Author" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Margin="10,26,0,0" Click="BtnNewAuthor_Click"/>
+        <Button x:Name="btnNewFile" Content="New File" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Margin="10,76,0,0"/>
+        <Button x:Name="btnFunctionEntry" Content="Function Entry" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Margin="10,101,0,0"/>
         <DockPanel Margin="0,0,0,393" >
             <ToolBarTray DockPanel.Dock="Top" Margin="0,0,-164,0">
                 <ToolBar>
@@ -25,6 +25,7 @@
 
             </ToolBarTray>
         </DockPanel>
+        <Button x:Name="btnFunctionScan" Content="Scan For Functions..." HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Margin="10,126,0,0" Click="BtnFunctionScan_Click"/>
 
     </Grid>
 </Window>

@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,9 +56,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddAuthor.xaml.cs">
+      <DependentUpon>AddAuthor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="call_stack\CallStack.cs" />
+    <Compile Include="FunctionList.xaml.cs">
+      <DependentUpon>FunctionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="utilities\FunctionReader.cs" />
+    <Compile Include="utilities\JavascriptFileReader.cs" />
     <Compile Include="utilities\Writer.cs" />
     <Compile Include="utilities\XMLReader.cs" />
+    <Page Include="AddAuthor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FunctionList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

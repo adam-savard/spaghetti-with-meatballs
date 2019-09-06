@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using meatballs.utilities;
 using meatballs.classes;
+using Microsoft.Win32;
+using System.IO;
 
 namespace meatballs
 {
@@ -37,12 +39,53 @@ namespace meatballs
 
         private void BtnHelp_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Not sure what everything does? Check out the documentation.");
+            MessageBox.Show("Note: function scanning is FAR from perfect. Double check names.");
         }
 
         private void BtnNewAuthor_Click(object sender, RoutedEventArgs e)
         {
+            AddAuthor newAuthor = new AddAuthor();
+            newAuthor.ShowDialog();
+        }
 
+        private void BtnFunctionScan_Click(object sender, RoutedEventArgs e)
+        {
+            var fileContent = string.Empty;
+            var fileName = string.Empty;
+            List<string> functions = new List<string>();
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "javascript files (*.js)|*.js|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 0;
+                openFileDialog.RestoreDirectory = true;
+                bool result = (bool)openFileDialog.ShowDialog();
+
+                if (result)
+                {
+                    //Get the path of specified file
+                    fileName = openFileDialog.SafeFileName;
+
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
+                    string line;
+                        while((line = reader.ReadLine()) != null)
+                            {
+                             if (FunctionReader.LineContainsFunction(line))
+                             {
+                                 functions.Add(FunctionReader.GetFunctionName(line));
+                             }
+                            }
+                    }
+
+                FunctionList newListBox = new FunctionList(fileName, functions);
+                newListBox.ShowDialog();
+                }
+            
         }
     }
 }

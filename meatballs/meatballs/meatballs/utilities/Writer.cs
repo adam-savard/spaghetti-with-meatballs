@@ -35,6 +35,7 @@ namespace meatballs.utilities
             newAuthor.Add(new XElement("author",
                        new XElement("id", id),
                        new XElement("name", author.Name),
+                       new XElement("notes", author.Notes),
                        new XElement("created", DateTime.Now.ToShortDateString())));
             doc.Save(Path.Combine(DocPath, "authors.xml"));
 
