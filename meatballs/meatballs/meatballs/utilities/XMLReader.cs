@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using meatballs.classes;
 
 namespace meatballs.utilities
 {
@@ -35,21 +36,21 @@ namespace meatballs.utilities
 
             //All of the checks lie here
             if (!Directory.Exists(config_dir)) Directory.CreateDirectory(config_dir);
-            if (!File.Exists(Path.Combine(config_dir, "authors.xml")))
+            if (!System.IO.File.Exists(Path.Combine(config_dir, "authors.xml")))
             {
                 XDocument doc = new XDocument(new XElement("authors"));
                 doc.Save(Path.Combine(config_dir, "authors.xml"));
             }
-            if (!File.Exists(Path.Combine(config_dir, "projects.xml"))) {
+            if (!System.IO.File.Exists(Path.Combine(config_dir, "projects.xml"))) {
                 XDocument doc = new XDocument(new XElement("projects"));
                 doc.Save(Path.Combine(config_dir, "projects.xml"));
             }
 
-            if (!File.Exists(Path.Combine(config_dir, "files.xml"))) {
+            if (!System.IO.File.Exists(Path.Combine(config_dir, "files.xml"))) {
                 XDocument doc = new XDocument(new XElement("files"));
                 doc.Save(Path.Combine(config_dir, "files.xml"));
             }
-            if (!File.Exists(Path.Combine(config_dir, "functions.xml"))) {
+            if (!System.IO.File.Exists(Path.Combine(config_dir, "functions.xml"))) {
                 XDocument doc = new XDocument(new XElement("functions"));
                 doc.Save(Path.Combine(config_dir, "functions.xml"));
             }
@@ -77,6 +78,52 @@ namespace meatballs.utilities
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Gets an author based on name. Case insensitive. Returns a dummy author if invalid.
+        /// </summary>
+        /// <param name="name">The name of the author to test</param>
+        /// <returns></returns>
+        public static Author GetAuthorFromName(string name)
+        {
+            string config_dir = Path.Combine(DocPath, "xml");
+            XDocument doc = XDocument.Load(Path.Combine(config_dir, "authors.xml"));
+
+            var query = from a in doc.Elements("authors").Elements("author")
+                        where a.Element("name").ToString().Equals(name) //TODO: Think about changing to .Contains()
+                        select a;
+
+            foreach(var result in query)
+            {
+                return new Author(result.Element("name").Value, int.Parse(result.Element("id").Value), DateTime.Parse(result.Element("created").Value), result.Element("notes").Value);
+            }
+
+            return new Author("none", -1, DateTime.Now, "none");
+
+
+        }
+
+        /// <summary>
+        /// Gets an author based on ID. Returns a dummy author if invalid.
+        /// </summary>
+        /// <param name="id">The author ID</param>
+        /// <returns></returns>
+        public static Author GetAuthorFromID(int id)
+        {
+            string config_dir = Path.Combine(DocPath, "xml");
+            XDocument doc = XDocument.Load(Path.Combine(config_dir, "authors.xml"));
+
+            var query = from a in doc.Elements("authors").Elements("author")
+                        where (int)a.Element("id") == id //TODO: Think about changing to .Contains()
+                        select a;
+
+            foreach (var result in query)
+            {
+                return new Author(result.Element("name").Value, int.Parse(result.Element("id").Value), DateTime.Parse(result.Element("created").Value), result.Element("notes").Value);
+            }
+
+            return new Author("none", -1, DateTime.Now, "none");
         }
     }
 }
