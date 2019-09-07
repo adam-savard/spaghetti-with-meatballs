@@ -41,5 +41,16 @@ namespace meatballs.classes
         /// </summary>
         public List<Function> Calls { get => calls; set => calls = value; }
         public int Id { get => id; set => id = value; }
+
+        public Function(string name, string description, string notes, Author author, File file, int id)
+        {
+            Name = name;
+            Description = description;
+            Notes = notes;
+            Author = author;
+            File = file;
+            Id = id;
+            Calls = new List<Function>();
+        }
     }
 }

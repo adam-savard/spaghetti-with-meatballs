@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Xml.Linq;
 using meatballs.classes;
 
@@ -124,6 +125,129 @@ namespace meatballs.utilities
             }
 
             return new Author("none", -1, DateTime.Now, "none");
+        }
+
+        /// <summary>
+        /// Gets a file from a filename.
+        /// </summary>
+        /// <param name="name">The file name</param>
+        /// <returns></returns>
+        public static classes.File GetFileFromName(string name)
+        {
+            string config_dir = Path.Combine(DocPath, "xml");
+            XDocument doc = XDocument.Load(Path.Combine(config_dir, "files.xml"));
+
+            var query = from f in doc.Elements("files").Elements("file")
+                        where f.Element("name").ToString().Equals(name) //TODO: Think about changing to .Contains()
+                        select f;
+
+            foreach (var result in query)
+            {
+                return new classes.File(int.Parse(result.Element("id").Value), result.Element("name").Value, result.Element("description").Value, result.Element("notes").Value, result.Element("extension").Value, GetProjectFromID(int.Parse(result.Element("project").Value)), GetAuthorFromID(int.Parse(result.Element("author").Value)));
+            }
+
+            return new classes.File(-1, "none", "none", "none", ".exe", GetProjectFromID(-1), GetAuthorFromID(-1));
+        }
+
+        
+        /// <summary>
+        /// Gets a file from a given ID.
+        /// </summary>
+        /// <param name="id">The ID of the file.</param>
+        /// <returns></returns>
+        public static classes.File GetFileFromID(int id)
+        {
+            string config_dir = Path.Combine(DocPath, "xml");
+            XDocument doc = XDocument.Load(Path.Combine(config_dir, "files.xml"));
+
+            var query = from f in doc.Elements("files").Elements("file")
+                        where (int)f.Element("id") == id 
+                        select f;
+
+            foreach (var result in query)
+            {
+                return new classes.File(int.Parse(result.Element("id").Value), result.Element("name").Value, result.Element("description").Value, result.Element("notes").Value, result.Element("extension").Value, GetProjectFromID(int.Parse(result.Element("project").Value)), GetAuthorFromID(int.Parse(result.Element("author").Value)));
+            }
+
+            return new classes.File(-1, "none", "none", "none", ".exe", GetProjectFromID(-1), GetAuthorFromID(-1));
+        }
+
+        
+        /// <summary>
+        /// Gets a project from a given ID.
+        /// </summary>
+        /// <param name="id">The ID of the project.</param>
+        /// <returns></returns>
+        public static Project GetProjectFromID(int id)
+        {
+            string config_dir = Path.Combine(DocPath, "xml");
+            XDocument doc = XDocument.Load(Path.Combine(config_dir, "projects.xml"));
+
+            var query = from p in doc.Elements("projects").Elements("project")
+                        where (int)p.Element("id") == id
+                        select p;
+
+            foreach (var result in query)
+            {
+                return new Project(result.Element("name").Value, int.Parse(result.Element("id").Value), DateTime.Parse(result.Element("created").Value), result.Element("language").Value, GetAuthorFromID(int.Parse(result.Element("author").Value)));
+            }
+            return new Project("none", -1, DateTime.Now, "none", GetAuthorFromID(-1));
+        }
+
+        /// <summary>
+        /// Gets a project from a name.
+        /// </summary>
+        /// <param name="name">The name of the project.</param>
+        /// <returns></returns>
+        public static Project GetProjectFromName(string name)
+        {
+            string config_dir = Path.Combine(DocPath, "xml");
+            XDocument doc = XDocument.Load(Path.Combine(config_dir, "projects.xml"));
+
+            var query = from f in doc.Elements("projects").Elements("project")
+                        where f.Element("name").ToString().Equals(name) //TODO: Think about changing to .Contains()
+                        select f;
+
+            foreach (var result in query)
+            {
+                return new Project(result.Element("name").Value, int.Parse(result.Element("id").Value), DateTime.Parse(result.Element("created").Value), result.Element("language").Value, GetAuthorFromID(int.Parse(result.Element("author").Value)));
+            }
+
+            return new Project("none", -1, DateTime.Now, "none", GetAuthorFromID(-1));
+        }
+
+        /// <summary>
+        /// Gets a function and all the functions it calls from a given ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static Function GetFunctionByID(int id)
+        {
+            string config_dir = Path.Combine(DocPath, "xml");
+            XDocument doc = XDocument.Load(Path.Combine(config_dir, "functions.xml"));
+
+            var query = from p in doc.Elements("functions").Elements("function")
+                        where (int)p.Element("id") == id
+                        select p;
+
+            foreach (var result in query)
+            {
+                List<Function> calls = new List<Function>();
+
+                foreach (var fid in result.Element("calls").DescendantNodes()) {
+                    if(fid.NodeType != System.Xml.XmlNodeType.Element)
+                    {
+                        calls.Add(GetFunctionByID(int.Parse(fid.ToString())));
+                    }
+                }
+
+                Function f = new Function(result.Element("name").Value, result.Element("description").Value, result.Element("notes").Value, GetAuthorFromID(int.Parse(result.Element("author").Value)), GetFileFromID(int.Parse(result.Element("file").Value)), int.Parse(result.Element("id").Value));
+                f.Calls = calls;
+                return f;
+            }
+
+            return new Function("none", "none", "none", GetAuthorFromID(-1), GetFileFromID(-1), -1);
+            
         }
     }
 }

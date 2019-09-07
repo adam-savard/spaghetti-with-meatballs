@@ -17,3 +17,6 @@ C:\Users\fanma\Documents\Software Development\spaghetti-with-meatballs\meatballs
 C:\Users\fanma\Documents\Software Development\spaghetti-with-meatballs\meatballs\meatballs\meatballs\obj\Debug\FunctionList.baml
 C:\Users\fanma\Documents\Software Development\spaghetti-with-meatballs\meatballs\meatballs\meatballs\obj\Debug\AddAuthor.g.cs
 C:\Users\fanma\Documents\Software Development\spaghetti-with-meatballs\meatballs\meatballs\meatballs\obj\Debug\AddAuthor.baml
+C:\Users\fanma\Documents\Software Development\spaghetti-with-meatballs\meatballs\meatballs\meatballs\obj\Debug\Wizard.g.cs
+C:\Users\fanma\Documents\Software Development\spaghetti-with-meatballs\meatballs\meatballs\meatballs\obj\Debug\meatballs_Content.g.cs
+C:\Users\fanma\Documents\Software Development\spaghetti-with-meatballs\meatballs\meatballs\meatballs\obj\Debug\Wizard.baml

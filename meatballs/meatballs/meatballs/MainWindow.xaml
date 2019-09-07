@@ -23,6 +23,7 @@
             </ToolBarTray>
         </DockPanel>
         <Button x:Name="btnFunctionScan" Content="Scan For Functions..." HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Margin="142,151,0,0" Click="BtnFunctionScan_Click"/>
+        <Button x:Name="btnTest" Content="Test Writing/Calling Function" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Margin="142,207,0,0" Click="BtnTest_Click"/>
 
     </Grid>
 </Window>

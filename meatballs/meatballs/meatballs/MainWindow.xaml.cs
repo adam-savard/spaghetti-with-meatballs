@@ -35,9 +35,9 @@ namespace meatballs
             {
                 Wizard w = new Wizard();
                 w.ShowDialog();
-                this.Visibility = Visibility.Hidden;
-                this.Close();
-            }
+               this.Visibility = Visibility.Hidden;
+               this.Close();
+           }
         }
 
         private void BtnCreateProject_Click(object sender, RoutedEventArgs e)
@@ -94,6 +94,20 @@ namespace meatballs
                 newListBox.ShowDialog();
                 }
             
+        }
+
+        private void BtnTest_Click(object sender, RoutedEventArgs e)
+        {
+            Function f = new Function("test", "test", "test", XMLReader.GetAuthorFromID(0), XMLReader.GetFileFromID(0), 0);
+            f.Calls.Add(new Function("test2", "test2", "test2", XMLReader.GetAuthorFromID(0), XMLReader.GetFileFromID(0), 1));
+            f.Calls.Add(new Function("test3", "test3", "test3", XMLReader.GetAuthorFromID(0), XMLReader.GetFileFromID(0), 1));
+            f.Calls.Add(new Function("test4", "test4", "test4", XMLReader.GetAuthorFromID(0), XMLReader.GetFileFromID(0), 1));
+            f.Calls.Add(new Function("test5", "test5", "test5", XMLReader.GetAuthorFromID(0), XMLReader.GetFileFromID(0), 1));
+            f.Calls.Add(new Function("test6", "test6", "test6", XMLReader.GetAuthorFromID(0), XMLReader.GetFileFromID(0), 1));
+            f.Calls.Add(new Function("test7", "test7", "test7", XMLReader.GetAuthorFromID(0), XMLReader.GetFileFromID(0), 1));
+            Writer.WriteFunction(f);
+
+            XMLReader.GetFunctionByID(6);
         }
     }
 }

@@ -31,6 +31,15 @@ namespace meatballs.classes
         /// <summary>
         /// The author of the project.
         /// </summary>
-        internal Author Author { get => author; set => author = value; }
+        public Author Author { get => author; set => author = value; }
+
+        public Project(string name, int id, DateTime created, string language, Author author)
+        {
+            Name = name;
+            Id = id;
+            Created = created;
+            Language = language;
+            Author = author;
+        }
     }
 }

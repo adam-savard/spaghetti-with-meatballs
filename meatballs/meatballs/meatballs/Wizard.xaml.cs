@@ -104,7 +104,11 @@ Click next to continue!";
 
         private void BtnFinish_Click(object sender, RoutedEventArgs e)
         {
-
+            Writer.WriteProject(new Project(txtProjectName.Text, -1, DateTime.Now, txtProjectLanguage.Text, XMLReader.GetAuthorFromID(0)));
+            MessageBox.Show("Happy Coding!");
+            MainWindow m = new MainWindow();
+            m.Show();
+            this.Close();
         }
     }
 }

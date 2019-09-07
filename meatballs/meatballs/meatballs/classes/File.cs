@@ -47,5 +47,16 @@ namespace meatballs.classes
         /// A list of functions that are in the file.
         /// </summary>
         public List<Function> Functions { get => functions; set => functions = value; }
+
+        public File(int id, string name, string description, string notes, string extension, Project project, Author author)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+            Notes = notes;
+            Extension = extension;
+            Project = project;
+            Author = author;
+        }
     }
 }
