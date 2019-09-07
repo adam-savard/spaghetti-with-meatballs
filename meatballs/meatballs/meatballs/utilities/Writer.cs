@@ -58,7 +58,7 @@ namespace meatballs.utilities
                        new XElement("language", project.Language),
                        new XElement("author", project.Author.Id),
                        new XElement("created", DateTime.Now.ToShortDateString())));
-            doc.Save(Path.Combine(DocPath, "project.xml"));
+            doc.Save(Path.Combine(DocPath, "projects.xml"));
 
         }
 
@@ -106,8 +106,7 @@ namespace meatballs.utilities
                     calls.Add(new XElement("function_id", calls_id));
                 }
             }
-            else
-            {
+            
                 XDocument doc = XDocument.Load(Path.Combine(DocPath, "functions.xml"));
                 int id = Writer.GenerateNextId(doc, "function");
                 XElement newAuthor = doc.Element("functions");
@@ -120,12 +119,12 @@ namespace meatballs.utilities
                            new XElement("description", function.Description),
                            calls,
                            new XElement("notes", function.Notes)));
-                doc.Save(Path.Combine(DocPath, "files.xml"));
-            }
+                doc.Save(Path.Combine(DocPath, "functions.xml"));
+            
 
             
 
-            return function.Id;
+            return id;
         }
 
         static int GenerateNextId(XDocument file, string elementName)
