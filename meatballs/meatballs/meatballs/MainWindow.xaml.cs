@@ -30,6 +30,14 @@ namespace meatballs
 
             txtTest.Content = "Config Files Exist!";
             XMLReader.CreateWorkingDirectory(); //creates all the necessary files the first time the application is loaded.
+
+            if (XMLReader.BlankXMLCheck())
+            {
+                Wizard w = new Wizard();
+                w.ShowDialog();
+                this.Visibility = Visibility.Hidden;
+                this.Close();
+            }
         }
 
         private void BtnCreateProject_Click(object sender, RoutedEventArgs e)

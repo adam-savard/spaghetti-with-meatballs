@@ -17,3 +17,6 @@ C:\Users\fanma\Documents\Software Development\spaghetti-with-meatballs\meatballs
 C:\Users\fanma\Documents\Software Development\spaghetti-with-meatballs\meatballs\meatballs\meatballs\obj\Release\meatballs.csproj.CoreCompileInputs.cache
 C:\Users\fanma\Documents\Software Development\spaghetti-with-meatballs\meatballs\meatballs\meatballs\obj\Release\meatballs.exe
 C:\Users\fanma\Documents\Software Development\spaghetti-with-meatballs\meatballs\meatballs\meatballs\obj\Release\meatballs.pdb
+C:\Users\fanma\Documents\Software Development\spaghetti-with-meatballs\meatballs\meatballs\meatballs\obj\Release\Wizard.g.cs
+C:\Users\fanma\Documents\Software Development\spaghetti-with-meatballs\meatballs\meatballs\meatballs\obj\Release\meatballs_Content.g.cs
+C:\Users\fanma\Documents\Software Development\spaghetti-with-meatballs\meatballs\meatballs\meatballs\obj\Release\Wizard.baml

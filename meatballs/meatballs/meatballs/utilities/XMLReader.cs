@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 
@@ -52,6 +53,30 @@ namespace meatballs.utilities
                 XDocument doc = new XDocument(new XElement("functions"));
                 doc.Save(Path.Combine(config_dir, "functions.xml"));
             }
+        }
+
+        /// <summary>
+        /// Checks to see if there is a blank XML file, either a blank Project or Author file.
+        /// </summary>
+        /// <returns>True if there is a blank file.</returns>
+        public static bool BlankXMLCheck()
+        {
+            string config_dir = Path.Combine(DocPath, "xml");
+            XDocument doc = XDocument.Load(Path.Combine(config_dir, "authors.xml"));
+            
+            if (doc.Root.Elements().Count() < 1)
+            {
+                return true;
+            }
+
+            doc = XDocument.Load(Path.Combine(config_dir, "projects.xml"));
+
+            if (doc.Root.Elements().Count() < 1)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
