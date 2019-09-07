@@ -59,7 +59,6 @@
     <Compile Include="AddAuthor.xaml.cs">
       <DependentUpon>AddAuthor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="call_stack\CallStack.cs" />
     <Compile Include="FunctionList.xaml.cs">
       <DependentUpon>FunctionList.xaml</DependentUpon>
     </Compile>
