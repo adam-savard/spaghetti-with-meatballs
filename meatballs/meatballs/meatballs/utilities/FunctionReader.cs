@@ -131,28 +131,27 @@ namespace meatballs.utilities
         /// <summary>
         /// Returns true if string contains reserved words
         /// </summary>
-        /// <param name="s"></param>
+        /// <param name="s">The string to check</param>
         /// <returns></returns>
         public static bool StringContainsReservedWords(string s)
         {
             if (s == string.Empty) return false;
 
-            bool containsReservedWords = false;
-            //first, check the last char and see if it's a math thing
+            
             char lastChar = s[s.Length - 1];
             //not a letter character? get out of here.
             if ((int)lastChar < 65 || (int)lastChar > 122) return true;
 
             if ((int)lastChar >= 91 && (int)lastChar <= 96) return true;
 
-            string[] reservedWords = { "if", "else", "switch", "for" };
+            string[] reservedWords = { "if", "else", "switch", "for" }; //subject to expand as necssary
 
             foreach(string r in reservedWords)
             {
                 if (s.Equals(r)) return true;
             }
 
-            return containsReservedWords;
+            return false;
         }
     }
 }
