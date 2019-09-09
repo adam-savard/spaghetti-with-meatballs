@@ -56,23 +56,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddAuthor.xaml.cs">
+    <Compile Include="guis\AddAuthor.xaml.cs">
       <DependentUpon>AddAuthor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FunctionList.xaml.cs">
+    <Compile Include="guis\FunctionList.xaml.cs">
       <DependentUpon>FunctionList.xaml</DependentUpon>
     </Compile>
     <Compile Include="utilities\FunctionReader.cs" />
     <Compile Include="utilities\Writer.cs" />
     <Compile Include="utilities\XMLReader.cs" />
-    <Compile Include="Wizard.xaml.cs">
+    <Compile Include="guis\Wizard.xaml.cs">
       <DependentUpon>Wizard.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddAuthor.xaml">
+    <Page Include="guis\AddAuthor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FunctionList.xaml">
+    <Page Include="guis\FunctionList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -91,7 +91,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Wizard.xaml">
+    <Page Include="guis\Wizard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,25 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:meatballs"
         mc:Ignorable="d"
-        Title="Meatballs De-Spaghettifier" Height="351.557" Width="439.403" WindowStartupLocation="CenterScreen" Icon="img/spaghetti.png">
-    <Grid Margin="0,0,2,-2">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="307*"/>
-            <ColumnDefinition Width="89*"/>
-        </Grid.ColumnDefinitions>
-        <Label x:Name="txtTest" Content="Test" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="142,176,0,0" Width="162"/>
-        <Button x:Name="btnCreateProject" Content="New Project" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Margin="142,76,0,0" Click="BtnCreateProject_Click"/>
-        <Button x:Name="btnNewAuthor" Content="New Author" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Margin="142,51,0,0" Click="BtnNewAuthor_Click"/>
-        <Button x:Name="btnNewFile" Content="New File" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Margin="142,101,0,0"/>
-        <Button x:Name="btnFunctionEntry" Content="Function Entry" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Margin="142,126,0,0"/>
-        <DockPanel Margin="0,0,0,393" >
-            <ToolBarTray DockPanel.Dock="Top" Margin="0,0,-164,0">
-                <ToolBar/>
+        Title="Meatballs De-Spaghettifier" Height="515.557" Width="965.403" WindowStartupLocation="CenterScreen" Icon="img/spaghetti.png" WindowStyle="ToolWindow">
+    <Canvas Margin="0,0,2,-2">
 
-            </ToolBarTray>
-        </DockPanel>
-        <Button x:Name="btnFunctionScan" Content="Scan For Functions..." HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Margin="142,151,0,0" Click="BtnFunctionScan_Click"/>
-        <Button x:Name="btnScanForCallingFunctions" Content="Analyze Functions..." HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Margin="142,207,0,0" Click="BtnScanForCallingFunctions_Click"/>
+        <Rectangle Fill="#FFF4F4F5" Height="211" Stroke="Black" Canvas.Top="36" Width="183" Canvas.Left="198"/>
 
-    </Grid>
+        <Rectangle Fill="#FFF4F4F5" Height="211" Stroke="Black" Canvas.Top="36" Width="183" Canvas.Left="10"/>
+
+        <Label x:Name="txtTest" Content="Test" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Height="26" Canvas.Left="10" Canvas.Top="10"/>
+        <Button x:Name="btnCreateProject" Content="New Project" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Click="BtnCreateProject_Click" Height="20" Canvas.Left="20" Canvas.Top="92"/>
+        <Button x:Name="btnNewAuthor" Content="New Author" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Click="BtnNewAuthor_Click" Height="20" Canvas.Left="20" Canvas.Top="67"/>
+        <Button x:Name="btnNewFile" Content="New File" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Height="20" Canvas.Left="20" Canvas.Top="116"/>
+        <Button x:Name="btnFunctionEntry" Content="Function Entry" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Height="20" Canvas.Left="20" Canvas.Top="141"/>
+        <Button x:Name="btnFunctionScan" Content="Scan File For Functions..." HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Click="BtnFunctionScan_Click" Height="20" Canvas.Left="209" Canvas.Top="116"/>
+        <Button x:Name="btnScanForCallingFunctions" Content="Analyze Functions..." HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Click="BtnScanForCallingFunctions_Click" Height="20" Canvas.Left="209" Canvas.Top="141"/>
+        <Label Content="Create New Things" Canvas.Left="44" Canvas.Top="41"/>
+        <Label Content="Automate Things" Canvas.Left="240" Canvas.Top="41"/>
+        <Button x:Name="btnGuideMe" Content="Guide Me Through!" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Click="BtnFunctionScan_Click" Height="20" Canvas.Left="209" Canvas.Top="67"/>
+
+    </Canvas>
 </Window>

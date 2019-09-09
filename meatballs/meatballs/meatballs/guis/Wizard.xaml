@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:meatballs"
         mc:Ignorable="d"
-        Title="Wizard" Height="450" Width="800" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+        Title="Meatballs First Boot Wizard" Height="450" Width="800" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
     <Grid>
         <Canvas x:Name="pnlStart" HorizontalAlignment="Left" Height="409" VerticalAlignment="Top" Width="782" Visibility="Hidden">
             <Button x:Name="btnNext" Content="Next..." Width="75" Canvas.Left="697" Canvas.Top="379" Click="BtnNext_Click"/>
             <Label x:Name="lblExplanation" Content="" Canvas.Left="349" Canvas.Top="47"/>
-            <Image Height="352" Canvas.Left="10" Canvas.Top="47" Width="334" Source="img/spaghetti.png"/>
+            <Image Height="352" Canvas.Left="10" Canvas.Top="47" Width="334" Source="/meatballs;component/img/spaghetti.png"/>
 
         </Canvas>
         <Canvas x:Name="pnlEnterName" Height="409" Width="782" Visibility="Hidden">
@@ -23,7 +23,7 @@
         </Canvas>
         <Canvas x:Name="pnlProjectExplanation" Height="409" Width="782" Visibility="Hidden">
             <Label x:Name="lblProjectExplanation" Content="" Canvas.Left="370" Canvas.Top="31"/>
-            <Image Height="346" Width="344" Source="img/project-management.png" Canvas.Left="26" Canvas.Top="31"/>
+            <Image Height="346" Width="344" Source="/meatballs;component/img/project-management.png" Canvas.Left="26" Canvas.Top="31"/>
             <Button x:Name="btnNextProjects" Content="Next..." Width="75" Canvas.Left="707" Canvas.Top="379" Click="BtnNextProjects_Click"/>
 
         </Canvas>
@@ -32,7 +32,7 @@
             <TextBox x:Name="txtProjectName" Height="23" TextWrapping="Wrap" Text="Default" Width="782" Canvas.Top="26"/>
             <Label Content="And it is programmed in..." Canvas.Top="55"/>
             <TextBox x:Name="txtProjectLanguage" Height="23" TextWrapping="Wrap" Text="JavaScript" Width="782" Canvas.Top="81"/>
-            <Image Height="246" Width="230" Canvas.Top="163" Source="img/monitor.png"/>
+            <Image Height="246" Width="230" Canvas.Top="163" Source="/meatballs;component/img/monitor.png"/>
             <Button x:Name="btnFinish" Content="Finish!" Width="218" Canvas.Left="356" Canvas.Top="223" Height="69" FontSize="18" FontWeight="Bold" Click="BtnFinish_Click"/>
 
 
