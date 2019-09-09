@@ -96,18 +96,38 @@ namespace meatballs
             
         }
 
-        private void BtnTest_Click(object sender, RoutedEventArgs e)
-        {
-            Function f = new Function("test", "test", "test", XMLReader.GetAuthorFromID(0), XMLReader.GetFileFromID(0), 0);
-            f.Calls.Add(new Function("test2", "test2", "test2", XMLReader.GetAuthorFromID(0), XMLReader.GetFileFromID(0), 1));
-            f.Calls.Add(new Function("test3", "test3", "test3", XMLReader.GetAuthorFromID(0), XMLReader.GetFileFromID(0), 1));
-            f.Calls.Add(new Function("test4", "test4", "test4", XMLReader.GetAuthorFromID(0), XMLReader.GetFileFromID(0), 1));
-            f.Calls.Add(new Function("test5", "test5", "test5", XMLReader.GetAuthorFromID(0), XMLReader.GetFileFromID(0), 1));
-            f.Calls.Add(new Function("test6", "test6", "test6", XMLReader.GetAuthorFromID(0), XMLReader.GetFileFromID(0), 1));
-            f.Calls.Add(new Function("test7", "test7", "test7", XMLReader.GetAuthorFromID(0), XMLReader.GetFileFromID(0), 1));
-            Writer.WriteFunction(f);
+        
 
-            XMLReader.GetFunctionByID(6);
+        private void BtnScanForCallingFunctions_Click(object sender, RoutedEventArgs e)
+        {
+            var fileContent = string.Empty;
+            var fileName = string.Empty;
+            List<string> functions = new List<string>();
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.InitialDirectory = "c:\\";
+            openFileDialog.Filter = "javascript files (*.js)|*.js|All files (*.*)|*.*";
+            openFileDialog.FilterIndex = 0;
+            openFileDialog.RestoreDirectory = true;
+            bool result = (bool)openFileDialog.ShowDialog();
+
+            if (result)
+            {
+                //Get the path of specified file
+                fileName = openFileDialog.SafeFileName;
+
+                //Read the contents of the file into a stream
+                var fileStream = openFileDialog.OpenFile();
+
+                using (StreamReader reader = new StreamReader(fileStream))
+                {
+                    functions = FunctionReader.AnalyzeFunctions("add_route_icon", reader, true);
+                }
+
+                FunctionList newListBox = new FunctionList(fileName, functions);
+                newListBox.ShowDialog();
+            }
         }
     }
 }

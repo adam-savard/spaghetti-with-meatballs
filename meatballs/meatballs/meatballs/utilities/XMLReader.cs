@@ -9,13 +9,16 @@ using meatballs.classes;
 
 namespace meatballs.utilities
 {
+    /// <summary>
+    /// Reads from predefined XML files.
+    /// </summary>
     public static class XMLReader
     {
-        //There is a bare minimum of 3 XML files that need to be parsed
+        //There is a bare minimum of 4 XML files that need to be parsed
         //1. authors.xml
         //2. files.xml
         //3. functions.xml
-        //
+        //4. projects.xml
         //These files need to exist on disk. If they don't, they should be created.
 
 
@@ -100,7 +103,7 @@ namespace meatballs.utilities
                 return new Author(result.Element("name").Value, int.Parse(result.Element("id").Value), DateTime.Parse(result.Element("created").Value), result.Element("notes").Value);
             }
 
-            return new Author("none", -1, DateTime.Now, "none");
+            return new Author(name, -1, DateTime.Now, "none");
 
 
         }
@@ -146,7 +149,7 @@ namespace meatballs.utilities
                 return new classes.File(int.Parse(result.Element("id").Value), result.Element("name").Value, result.Element("description").Value, result.Element("notes").Value, result.Element("extension").Value, GetProjectFromID(int.Parse(result.Element("project").Value)), GetAuthorFromID(int.Parse(result.Element("author").Value)));
             }
 
-            return new classes.File(-1, "none", "none", "none", ".exe", GetProjectFromID(-1), GetAuthorFromID(-1));
+            return new classes.File(-1, name, "none", "none", ".exe", GetProjectFromID(-1), GetAuthorFromID(-1));
         }
 
         
@@ -213,7 +216,7 @@ namespace meatballs.utilities
                 return new Project(result.Element("name").Value, int.Parse(result.Element("id").Value), DateTime.Parse(result.Element("created").Value), result.Element("language").Value, GetAuthorFromID(int.Parse(result.Element("author").Value)));
             }
 
-            return new Project("none", -1, DateTime.Now, "none", GetAuthorFromID(-1));
+            return new Project(name, -1, DateTime.Now, "none", GetAuthorFromID(-1));
         }
 
         /// <summary>
@@ -226,9 +229,9 @@ namespace meatballs.utilities
             string config_dir = Path.Combine(DocPath, "xml");
             XDocument doc = XDocument.Load(Path.Combine(config_dir, "functions.xml"));
 
-            var query = from p in doc.Elements("functions").Elements("function")
-                        where (int)p.Element("id") == id
-                        select p;
+            var query = from f in doc.Elements("functions").Elements("function")
+                        where (int)f.Element("id") == id
+                        select f;
 
             foreach (var result in query)
             {
@@ -248,6 +251,41 @@ namespace meatballs.utilities
 
             return new Function("none", "none", "none", GetAuthorFromID(-1), GetFileFromID(-1), -1);
             
+        }
+
+        /// <summary>
+        /// Gets a function based on its name.
+        /// </summary>
+        /// <param name="name">The name of the function.</param>
+        /// <returns></returns>
+        public static Function GetFunctionByName(string name)
+        {
+            string config_dir = Path.Combine(DocPath, "xml");
+            XDocument doc = XDocument.Load(Path.Combine(config_dir, "functions.xml"));
+
+            var query = from f in doc.Elements("functions").Elements("function")
+                        where f.Element("name").ToString().Equals(name)
+                        select f;
+
+            foreach (var result in query)
+            {
+                List<Function> calls = new List<Function>();
+
+                foreach (var fid in result.Element("calls").DescendantNodes())
+                {
+                    if (fid.NodeType != System.Xml.XmlNodeType.Element)
+                    {
+                        calls.Add(GetFunctionByID(int.Parse(fid.ToString())));
+                    }
+                }
+
+                Function f = new Function(result.Element("name").Value, result.Element("description").Value, result.Element("notes").Value, GetAuthorFromID(int.Parse(result.Element("author").Value)), GetFileFromID(int.Parse(result.Element("file").Value)), int.Parse(result.Element("id").Value));
+                f.Calls = calls;
+                return f;
+            }
+
+            return new Function(name, "none", "none", GetAuthorFromID(-1), GetFileFromID(-1), -1);
+
         }
     }
 }
