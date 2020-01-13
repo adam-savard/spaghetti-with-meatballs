@@ -1,3 +1,5 @@
+# THIS PROJECT IS DEPRECATED. I NO LONGER HAVE TIME TO WORK ON IT. I NO LONGER USE WINDOWS.
+
 # spaghetti-with-meatballs
 A way to parse through a whole bunch of spaghetti code to hopefully make some sense out of it.
 
